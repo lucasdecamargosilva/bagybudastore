@@ -154,7 +154,31 @@ function deleteClient(id) {
 }
 
 function updateStats() {
-    if (statTotalClients) statTotalClients.innerText = clients.length;
+    const activeClientsCount = clients.filter(c => c.status === 'Ativo').length;
+
+    // Simple logic for plan values
+    const planValues = {
+        'Start': 499,
+        'Pro': 999,
+        'Enterprise': 2499
+    };
+
+    const totalMRR = clients
+        .filter(c => c.status === 'Ativo')
+        .reduce((sum, c) => sum + (planValues[c.plan] || 0), 0);
+
+    // Simulated growth for UI
+    const growth = activeClientsCount > 0 ? "12%" : "0%";
+
+    if (document.getElementById('stat-active-clients')) {
+        document.getElementById('stat-active-clients').innerText = activeClientsCount;
+    }
+    if (document.getElementById('stat-total-mrr')) {
+        document.getElementById('stat-total-mrr').innerText = `R$ ${totalMRR.toLocaleString('pt-BR')}`;
+    }
+    if (document.getElementById('stat-growth')) {
+        document.getElementById('stat-growth').innerText = growth;
+    }
 }
 
 function saveData() {
