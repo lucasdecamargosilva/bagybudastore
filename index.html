@@ -27,18 +27,7 @@
                     <span>Desempenho</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-item" data-view="clients">
-                    <i class="fas fa-users"></i>
-                    <span>Clientes</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-item" data-view="registration">
-                    <i class="fas fa-user-plus"></i>
-                    <span>Novo Cadastro</span>
-                </a>
-            </li>
+
         </ul>
 
         <div class="user-profile">
@@ -68,57 +57,80 @@
                 </div>
             </div>
 
+            <!-- KPI Cards -->
             <div class="stats-grid">
-                <div class="stats-grid">
-                    <div class="stat-card glass">
-                        <div class="stat-label">Clientes Ativos</div>
-                        <div id="stat-active-clients" class="stat-value">0</div>
-                        <div class="stat-trend trend-up">
-                            <i class="fas fa-users"></i> Status: Ativo
-                        </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Clientes Ativos</div>
+                    <div id="stat-active-clients" class="stat-value">0</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-users"></i> Status: Ativo
                     </div>
-                    <div class="stat-card glass">
-                        <div class="stat-label">Faturamento Mensal (MRR)</div>
-                        <div id="stat-total-mrr" class="stat-value">R$ 0</div>
-                        <div class="stat-trend trend-up">
-                            <i class="fas fa-dollar-sign"></i> Recorrente
-                        </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Faturamento Mensal (MRR)</div>
+                    <div id="stat-total-mrr" class="stat-value">R$ 0</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-dollar-sign"></i> Recorrente
                     </div>
-                    <div class="stat-card glass">
-                        <div class="stat-label">Evolução do Mês</div>
-                        <div id="stat-growth" class="stat-value">12%</div>
-                        <div class="stat-trend trend-up">
-                            <i class="fas fa-chart-line"></i> Crescimento
-                        </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Evolução do Mês</div>
+                    <div id="stat-growth" class="stat-value">12%</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-chart-line"></i> Crescimento
                     </div>
                 </div>
             </div>
 
+            <!-- Package Breakdown -->
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 4px;">
+                Pacotes Contratados</h2>
+            <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="stat-card glass package-card">
+                    <div class="package-badge" style="background: rgba(100,116,139,0.15); color: #94a3b8;">STARTER</div>
+                    <div class="package-price">R$ 97<span>/mês</span></div>
+                    <div class="package-feature"><i class="fas fa-image"></i> 50 fotos/mês</div>
+                    <div class="package-stats">
+                        <div><span id="pkg-starter-count">0</span> assinantes</div>
+                        <div id="pkg-starter-total" style="color: var(--success); font-weight: 600;">R$ 0</div>
+                    </div>
+                </div>
+                <div class="stat-card glass package-card">
+                    <div class="package-badge" style="background: rgba(6,182,212,0.15); color: #22d3ee;">INICIAL</div>
+                    <div class="package-price">R$ 197<span>/mês</span></div>
+                    <div class="package-feature"><i class="fas fa-image"></i> 100 fotos/mês</div>
+                    <div class="package-stats">
+                        <div><span id="pkg-inicial-count">0</span> assinantes</div>
+                        <div id="pkg-inicial-total" style="color: var(--success); font-weight: 600;">R$ 0</div>
+                    </div>
+                </div>
+                <div class="stat-card glass package-card">
+                    <div class="package-badge" style="background: rgba(124,58,237,0.15); color: #a78bfa;">MÉDIO</div>
+                    <div class="package-price">R$ 397<span>/mês</span></div>
+                    <div class="package-feature"><i class="fas fa-image"></i> 500 fotos/mês</div>
+                    <div class="package-stats">
+                        <div><span id="pkg-medio-count">0</span> assinantes</div>
+                        <div id="pkg-medio-total" style="color: var(--success); font-weight: 600;">R$ 0</div>
+                    </div>
+                </div>
+                <div class="stat-card glass package-card">
+                    <div class="package-badge" style="background: rgba(245,158,11,0.15); color: #fbbf24;">PREMIUM</div>
+                    <div class="package-price">R$ 797<span>/mês</span></div>
+                    <div class="package-feature"><i class="fas fa-image"></i> 1200 fotos/mês</div>
+                    <div class="package-stats">
+                        <div><span id="pkg-premium-count">0</span> assinantes</div>
+                        <div id="pkg-premium-total" style="color: var(--success); font-weight: 600;">R$ 0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Client Table -->
             <div class="section-container glass">
                 <div class="table-header">
-                    <h2 class="table-title">Atividade Recente</h2>
-                </div>
-                <div
-                    style="height: 200px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--card-border); border-radius: 8px;">
-                    <p style="color: var(--text-dim);">Gráfico de atividade será renderizado aqui</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Clients List View -->
-        <section id="clients" class="view">
-            <div class="page-header">
-                <h1 class="page-title">Clientes</h1>
-                <button class="btn-primary" onclick="switchView('registration')">
-                    <i class="fas fa-plus"></i> Novo Cliente
-                </button>
-            </div>
-
-            <div class="section-container glass">
-                <div class="table-header">
-                    <div class="search-box">
-                        <input type="text" class="form-control" placeholder="Buscar cliente..." style="width: 300px;">
-                    </div>
+                    <h2 class="table-title">Clientes</h2>
+                    <button class="btn-primary" onclick="openRegistrationModal()">
+                        <i class="fas fa-plus"></i> Novo Cliente
+                    </button>
                 </div>
                 <table class="client-table">
                     <thead>
@@ -126,26 +138,29 @@
                             <th>Cliente</th>
                             <th>Empresa</th>
                             <th>Plano</th>
+                            <th>Valor Mensal</th>
+                            <th>Último Pagamento</th>
                             <th>Status</th>
-                            <th>Desde</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="client-table-body">
-                        <!-- Data will be loaded via JS -->
+                    <tbody id="dashboard-client-table-body">
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Registration View -->
-        <section id="registration" class="view">
-            <div class="page-header">
-                <h1 class="page-title">Novo Cadastro</h1>
-            </div>
 
-            <div class="section-container glass" style="max-width: 800px;">
-                <h2 class="mb-8">Informações do Cliente</h2>
+    </main>
+
+    <!-- Modal: Novo Cliente -->
+    <div id="registration-modal" class="modal-overlay">
+        <div class="modal-content glass-premium" style="max-width: 700px;">
+            <div class="modal-header">
+                <h2>Novo Cliente</h2>
+                <button class="close-modal" onclick="closeRegistrationModal()">&times;</button>
+            </div>
+            <div class="modal-body">
                 <form id="client-form">
                     <div class="form-grid">
                         <div class="form-group">
@@ -169,35 +184,36 @@
                         <div class="form-group">
                             <label for="plan">Plano</label>
                             <select id="plan" class="form-control">
-                                <option value="Start">Start</option>
-                                <option value="Pro">Pro</option>
-                                <option value="Enterprise">Enterprise</option>
+                                <option value="Starter">Starter - R$ 97/mês</option>
+                                <option value="Inicial">Inicial - R$ 197/mês</option>
+                                <option value="Médio">Médio - R$ 397/mês</option>
+                                <option value="Premium">Premium - R$ 797/mês</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="status">Status Inicial</label>
+                            <label for="status">Status</label>
                             <select id="status" class="form-control">
                                 <option value="Ativo">Ativo</option>
-                                <option value="Pendente">Pendente</option>
+                                <option value="Inativo">Inativo</option>
+                                <option value="Teste Gratuito">Teste Gratuito</option>
                             </select>
                         </div>
                         <div class="form-group" style="grid-column: span 2;">
                             <label for="website">Site (URL de Implementação)</label>
                             <input type="url" id="website" class="form-control"
-                                placeholder="https://www.lojaexemplo.com.br" required>
+                                placeholder="https://www.lojaexemplo.com.br">
                         </div>
                     </div>
-                    <div style="margin-top: 32px; display: flex; gap: 16px;">
-                        <button type="submit" class="btn-primary">Cadastrar Cliente</button>
-                        <button type="reset" class="logout-btn" style="background: transparent;">Limpar</button>
+                    <div style="margin-top: 24px; display: flex; gap: 16px; justify-content: flex-end;">
+                        <button type="button" class="logout-btn" onclick="closeRegistrationModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary"><i class="fas fa-user-plus"></i> Cadastrar</button>
                     </div>
                 </form>
             </div>
-        </section>
+        </div>
+    </div>
 
-    </main>
-
-    <!-- Modal for Client Details -->
+    <!-- Modal: Detalhes do Cliente -->
     <div id="client-modal" class="modal-overlay">
         <div class="modal-content glass-premium">
             <div class="modal-header">

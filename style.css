@@ -578,3 +578,55 @@ main {
     display: flex;
     justify-content: flex-end;
 }
+
+/* Package Cards */
+.package-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.package-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: fit-content;
+}
+
+.package-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.package-price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.package-feature {
+    font-size: 13px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.package-feature i {
+    color: var(--accent);
+}
+
+.package-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--card-border);
+    font-size: 14px;
+    color: var(--text-muted);
+}
