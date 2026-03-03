@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provou Levou | Gestão de Clientes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-bolt text-white"></i>
+            </div>
+            <span class="logo-text">QUANTIC</span>
+        </div>
+
+        <ul class="nav-menu">
+            <li>
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Desempenho</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-item" data-view="clients">
+                    <i class="fas fa-users"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-item" data-view="registration">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Novo Cadastro</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <span class="user-role">Bem vindo,</span>
+                <span class="user-name">lucas_admin</span>
+            </div>
+            <a href="#" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Fazer Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Dashboard View -->
+        <section id="dashboard" class="view active">
+            <div class="page-header">
+                <h1 class="page-title">Dashboard de Desempenho</h1>
+                <div class="filter-group">
+                    <button class="filter-btn" onclick="setFilter('hoje', this)">Hoje</button>
+                    <button class="filter-btn" onclick="setFilter('7d', this)">7 Dias</button>
+                    <button class="filter-btn" onclick="setFilter('15d', this)">15 Dias</button>
+                    <button class="filter-btn active" onclick="setFilter('30d', this)">30 Dias</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-label">Total de Clientes</div>
+                    <div class="stat-value" id="stat-total-clients">0</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i> 12% vs mês passado
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Leads Convertidos</div>
+                    <div class="stat-value">42</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i> 8% vs mês passado
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Total Mensal</div>
+                    <div class="stat-value">R$ 4.250</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i> 15% vs mês passado
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-label">Evolução de Faturamento</div>
+                    <div class="stat-value">74%</div>
+                    <div class="stat-trend trend-up">
+                        <i class="fas fa-arrow-up"></i> 2% vs período anterior
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-container glass">
+                <div class="table-header">
+                    <h2 class="table-title">Atividade Recente</h2>
+                </div>
+                <div
+                    style="height: 200px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--card-border); border-radius: 8px;">
+                    <p style="color: var(--text-dim);">Gráfico de atividade será renderizado aqui</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients List View -->
+        <section id="clients" class="view">
+            <div class="page-header">
+                <h1 class="page-title">Clientes</h1>
+                <button class="btn-primary" onclick="switchView('registration')">
+                    <i class="fas fa-plus"></i> Novo Cliente
+                </button>
+            </div>
+
+            <div class="section-container glass">
+                <div class="table-header">
+                    <div class="search-box">
+                        <input type="text" class="form-control" placeholder="Buscar cliente..." style="width: 300px;">
+                    </div>
+                </div>
+                <table class="client-table">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Empresa</th>
+                            <th>Plano</th>
+                            <th>Status</th>
+                            <th>Desde</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="client-table-body">
+                        <!-- Data will be loaded via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Registration View -->
+        <section id="registration" class="view">
+            <div class="page-header">
+                <h1 class="page-title">Novo Cadastro</h1>
+            </div>
+
+            <div class="section-container glass" style="max-width: 800px;">
+                <h2 class="mb-8">Informações do Cliente</h2>
+                <form id="client-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Nome do Responsável</label>
+                            <input type="text" id="name" class="form-control" placeholder="Ex: João Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Nome da Empresa</label>
+                            <input type="text" id="company" class="form-control" placeholder="Ex: Fashion Store"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail de Contato</label>
+                            <input type="email" id="email" class="form-control" placeholder="contato@empresa.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone / WhatsApp</label>
+                            <input type="text" id="phone" class="form-control" placeholder="(11) 99999-9999" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="plan">Plano</label>
+                            <select id="plan" class="form-control">
+                                <option value="Start">Start</option>
+                                <option value="Pro">Pro</option>
+                                <option value="Enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status Inicial</label>
+                            <select id="status" class="form-control">
+                                <option value="Ativo">Ativo</option>
+                                <option value="Pendente">Pendente</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label for="website">Site (URL de Implementação)</label>
+                            <input type="url" id="website" class="form-control"
+                                placeholder="https://www.lojaexemplo.com.br" required>
+                        </div>
+                    </div>
+                    <div style="margin-top: 32px; display: flex; gap: 16px;">
+                        <button type="submit" class="btn-primary">Cadastrar Cliente</button>
+                        <button type="reset" class="logout-btn" style="background: transparent;">Limpar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Client Details -->
+    <div id="client-modal" class="modal-overlay">
+        <div class="modal-content glass-premium">
+            <div class="modal-header">
+                <h2 id="modal-title">Detalhes do Cliente</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <label>Responsável</label>
+                        <span id="modal-name">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Empresa</label>
+                        <span id="modal-company">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>E-mail</label>
+                        <span id="modal-email">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Telefone</label>
+                        <span id="modal-phone">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Plano</label>
+                        <span id="modal-plan" class="status-badge">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Status</label>
+                        <span id="modal-status" class="status-badge">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Data de Adesão</label>
+                        <span id="modal-date">-</span>
+                    </div>
+                    <div class="detail-item" style="grid-column: span 2;">
+                        <label>Site Implementado</label>
+                        <a id="modal-website" href="#" target="_blank" style="color: var(--accent);">-</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="logout-btn" onclick="closeModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
