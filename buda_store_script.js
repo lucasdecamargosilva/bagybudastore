@@ -89,7 +89,7 @@
         + '<button class="q-btn-outline" id="q-return-product">TENTAR NOVAMENTE</button>'
         + '</div>'
         + '</div>'
-        + '<a href="https://provoulevou.com.br" target="_blank" style="display:flex;align-items:center;gap:5px;text-decoration:none;justify-content:center;padding:15px;background:#000;flex-shrink:0;"><span style="font-size:11px;color:#94a3b8;">powered by</span><img src="https://i.ibb.co/vzXP97X/logo-provou-levou-branco.png" style="height:14px;filter:brightness(0) invert(1);"></a>'
+        + '<a href="https://provoulevou.com.br" target="_blank" style="display:flex;align-items:center;gap:5px;text-decoration:none;justify-content:center;padding:15px;background:#000;flex-shrink:0;"><span style="font-size:11px;color:#94a3b8;">powered by</span><img src="https://provoulevou.com.br/assets/provoulevou-logo.png" style="height:14px;filter:brightness(0) invert(1);"></a>'
         + '</div>';
     document.body.appendChild(modalContainer);
 
