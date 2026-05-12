@@ -1,4 +1,15 @@
 (function () {
+    function isValidBRPhone(nums) {
+        if (nums.length !== 10 && nums.length !== 11) return false;
+        if (!/^[1-9][1-9]/.test(nums)) return false;
+        if (nums.length === 11 && nums[2] !== '9') return false;
+        var local = nums.length === 11 ? nums.slice(3) : nums.slice(2);
+        if (/^(\d)\1+$/.test(local)) return false;
+        if (/(\d)\1{5,}/.test(local)) return false;
+        if (/^(?:01234567|12345678|23456789|34567890|98765432|87654321|76543210|0123456789|1234567890)/.test(local)) return false;
+        return true;
+    }
+
     console.log("Provador IA Buda - Script carregado!");
 
     // ===============================================
@@ -212,7 +223,7 @@
 
         function validateForm() {
             var phone = phoneInput.value.replace(/\D/g, '');
-            var isPhoneValid = phone.length >= 10;
+            var isPhoneValid = isValidBRPhone(phone);
             var h = document.getElementById('q-h-val').value;
             var w = document.getElementById('q-w-val').value;
             document.getElementById('q-phone-error').style.display = (phone.length > 0 && !isPhoneValid) ? 'block' : 'none';
